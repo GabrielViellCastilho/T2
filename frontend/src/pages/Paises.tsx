@@ -128,7 +128,7 @@ const PaisesPage: React.FC = () => {
         <button
           disabled={page === 1}
           onClick={() => setPage((p) => p - 1)}
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50 w-full sm:w-auto"
+          className="px-4 py-2 rounded disabled:opacity-50 w-full sm:w-auto"
         >
           Anterior
         </button>
@@ -140,7 +140,7 @@ const PaisesPage: React.FC = () => {
         <button
           disabled={page === totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50 w-full sm:w-auto"
+          className="px-4 py-2  rounded disabled:opacity-50 w-full sm:w-auto"
         >
           Próxima
         </button>
