@@ -7,7 +7,8 @@ import Cidades from './pages/Cidades';
 import AdicionarCidade from './pages/AdicionarCidade';
 import AdicionarContinente from './pages/AdicionarContinente';
 import AdicionarPais from './pages/AdicionarPais';
-import VisualizarCidade from './pages/VisualizarCidade'; // ✅ import da nova página
+import VisualizarCidade from './pages/VisualizarCidade'; 
+import VisualizarPais from './pages/VisualizarPaises';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Route path="/cidades/adicionar" element={<AdicionarCidade />} />
         <Route path="/cidades/editar/:id" element={<AdicionarCidade />} />
         <Route path="/cidades/visualizar/:id" element={<VisualizarCidade />} /> 
+        <Route path="/paises/visualizar/:id" element={<VisualizarPais/>}/>
       </Routes>
     </Router>
   );

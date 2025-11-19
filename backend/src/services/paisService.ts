@@ -30,6 +30,7 @@ export const getPaises = async () => {
 export const getPaisById = async (id: number) => {
   try {
     const pais = await prisma.pais.findUnique({
+      include: { continente: true },
       where: {
         id: id,
       },
