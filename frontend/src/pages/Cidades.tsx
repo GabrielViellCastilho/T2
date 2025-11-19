@@ -116,27 +116,6 @@ const Cidades: React.FC = () => {
             </option>
           ))}
         </select>
-
-        <button
-          onClick={() => {
-            loadCidades();
-            setPage(1);
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
-        >
-          Buscar
-        </button>
-
-        <button
-          onClick={() => {
-            setPaisId("");
-            setContinenteId("");
-            setPage(1);
-          }}
-          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 w-full sm:w-auto"
-        >
-          Limpar
-        </button>
       </div>
 
       <div className="mt-8">
@@ -149,7 +128,6 @@ const Cidades: React.FC = () => {
               <span className="text-lg">{cidade.nome}</span>
 
               <div>
-                {/* BOTÃO VISUALIZAR */}
                 <Link
                   to={`/cidades/visualizar/${cidade.id}`}
                   className="text-blue-600 hover:text-blue-800 mr-3"
