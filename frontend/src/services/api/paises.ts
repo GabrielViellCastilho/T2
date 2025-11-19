@@ -8,6 +8,9 @@ export interface Pais {
   moeda: string;
   continenteId: number;
   url_bandeira?: string | null;
+  pib_per_capita?: number | null;
+  inflacao?: number | null;
+
 }
 
 export const fetchPaises = async (): Promise<Pais[]> => {

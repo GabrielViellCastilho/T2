@@ -17,16 +17,19 @@ model Continente {
 }
 
 model Pais {
-  id           Int      @id @default(autoincrement())
-  nome         String
-  populacao    Int
-  idiomaOficial String
-  moeda        String
-  continenteId Int
-  continente   Continente @relation(fields: [continenteId], references: [id])
-  cidades      Cidade[]
-  url_bandeira    String?     @db.VarChar(255)
+  id             Int       @id @default(autoincrement())
+  nome           String
+  populacao      Int
+  idiomaOficial  String
+  moeda          String
+  continenteId   Int
+  continente     Continente @relation(fields: [continenteId], references: [id])
+  cidades        Cidade[]
+  url_bandeira   String?    @db.VarChar(255)
+  pib_per_capita Decimal?   @db.Decimal(15,2)
+  inflacao       Decimal?   @db.Decimal(5,2)  
 }
+
 
 model Cidade {
   id           Int      @id @default(autoincrement())

@@ -8,7 +8,9 @@ export const createPais = async (
   idiomaOficial: string,
   moeda: string,
   continenteId: number,
-  url_bandeira?: string | null
+  url_bandeira?: string | null,
+  pib_per_capita?: number | null,
+  inflacao?: number | null
 ) => {
   return await prisma.pais.create({
     data: {
@@ -17,23 +19,24 @@ export const createPais = async (
       idiomaOficial,
       moeda,
       continenteId,
-      url_bandeira,
+      url_bandeira: url_bandeira ?? null,
+      pib_per_capita: pib_per_capita ?? null,
+      inflacao: inflacao ?? null,
     },
   });
 };
 
-
 export const getPaises = async () => {
-  return await prisma.pais.findMany();
+  return await prisma.pais.findMany({
+    include: { continente: true },
+  });
 };
 
 export const getPaisById = async (id: number) => {
   try {
     const pais = await prisma.pais.findUnique({
       include: { continente: true },
-      where: {
-        id: id,
-      },
+      where: { id },
     });
     return pais;
   } catch (error) {
@@ -43,9 +46,8 @@ export const getPaisById = async (id: number) => {
 
 export const getPaisesPorContinente = async (continenteId: number) => {
   return await prisma.pais.findMany({
-    where: {
-      continenteId: continenteId,
-    },
+    where: { continenteId },
+    include: { continente: true },
   });
 };
 
@@ -56,7 +58,9 @@ export const updatePais = async (
   idiomaOficial: string,
   moeda: string,
   continenteId: number,
-  url_bandeira?: string
+  url_bandeira?: string | null,
+  pib_per_capita?: number | null,
+  inflacao?: number | null
 ) => {
   return await prisma.pais.update({
     where: { id },
@@ -66,7 +70,9 @@ export const updatePais = async (
       idiomaOficial,
       moeda,
       continenteId,
-      url_bandeira,
+      url_bandeira: url_bandeira ?? null,
+      pib_per_capita: pib_per_capita ?? null,
+      inflacao: inflacao ?? null,
     },
   });
 };
@@ -96,7 +102,6 @@ export const getAllPaises = async (
         orderBy: { id: "asc" },
         where,
       }),
-
       prisma.pais.count({ where }),
     ]);
 

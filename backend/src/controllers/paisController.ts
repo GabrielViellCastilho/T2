@@ -16,6 +16,8 @@ export const createPaisController = async (req: Request, res: Response) => {
       moeda,
       continenteId,
       url_bandeira,
+      pib_per_capita,
+      inflacao,
     } = req.body;
 
     const pais = await createPais(
@@ -24,20 +26,21 @@ export const createPaisController = async (req: Request, res: Response) => {
       idiomaOficial,
       moeda,
       continenteId,
-      url_bandeira
+      url_bandeira ?? null,
+      pib_per_capita ?? null,
+      inflacao ?? null
     );
 
     res.status(201).json(pais);
-} catch (error: any) {
-  console.error("ERRO AO CRIAR PAÍS:", error);
+  } catch (error: any) {
+    console.error("ERRO AO CRIAR PAÍS:", error);
 
-  return res.status(500).json({
-    error: "Erro ao criar país",
-    message: error.message,
-    meta: error.meta || null
-  });
-}
-
+    return res.status(500).json({
+      error: "Erro ao criar país",
+      message: error.message,
+      meta: error.meta || null,
+    });
+  }
 };
 
 export const getPaisesController = async (req: Request, res: Response) => {
@@ -55,7 +58,6 @@ export const getPaisesController = async (req: Request, res: Response) => {
     }
 
     const filters: any = {};
-
     if (continenteId) {
       const continenteParsed = Number(continenteId);
       if (isNaN(continenteParsed)) {
@@ -65,7 +67,6 @@ export const getPaisesController = async (req: Request, res: Response) => {
     }
 
     const result = await getAllPaises(pageNumber, limitNumber, filters);
-
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Erro ao buscar países" });
@@ -107,6 +108,8 @@ export const updatePaisController = async (req: Request, res: Response) => {
       moeda,
       continenteId,
       url_bandeira,
+      pib_per_capita,
+      inflacao,
     } = req.body;
 
     const pais = await updatePais(
@@ -116,7 +119,9 @@ export const updatePaisController = async (req: Request, res: Response) => {
       idiomaOficial,
       moeda,
       continenteId,
-      url_bandeira
+      url_bandeira ?? null,
+      pib_per_capita ?? null,
+      inflacao ?? null
     );
 
     res.status(200).json(pais);
@@ -132,8 +137,8 @@ export const deletePaisController = async (req: Request, res: Response) => {
     if (isNaN(idNumber)) {
       return res.status(400).json({ message: "ID inválido" });
     }
-    await deletePais(idNumber);
 
+    await deletePais(idNumber);
     res.status(200).json({ message: "País deletado com sucesso" });
   } catch (error) {
     res.status(500).json({ error: "Erro ao deletar país" });
