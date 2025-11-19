@@ -100,14 +100,14 @@ const PaisesPage: React.FC = () => {
               <div>
                 <Link
                   to={`/paises/visualizar/${pais.id}`}
-                  className="text-green-600 hover:text-green-800 mr-3"
+                  className="text-blue-600 hover:text-blue-800 mr-3"
                 >
                   Visualizar
                 </Link>
 
                 <Link
                   to={`/paises/editar/${pais.id}`}
-                  className="text-blue-500 hover:text-blue-700 mr-3"
+                  className="text-yellow-500 hover:text-blue-yellow mr-3"
                 >
                   Editar
                 </Link>

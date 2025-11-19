@@ -54,17 +54,16 @@ const VisualizarPais: React.FC = () => {
     );
   }
 
-  const continenteNome = continentes.find(c => c.id === pais.continenteId)?.nome || "Desconhecido";
+  const continenteNome =
+    continentes.find((c) => c.id === pais.continenteId)?.nome || "Desconhecido";
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        Detalhes do País
-      </h1>
+      <h1 className="text-3xl font-bold text-center mb-6">Detalhes do País</h1>
 
       <BackButton />
 
-      <div className="mt-6 border rounded-lg p-6 bg-white shadow-md max-w-lg mx-auto">
+      <div className="mt-6 border rounded-lg p-6 bg-white shadow-md max-w-lg mx-auto text-gray-900">
         <p>
           <strong>Nome:</strong> {pais.nome}
         </p>

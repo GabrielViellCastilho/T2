@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchCidadeById } from "../services/api/cidades";
 
-// Tipagem correta baseada no retorno do backend
 interface Continente {
   id: number;
   nome: string;
@@ -55,7 +54,7 @@ const VisualizarCidade: React.FC = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl text-gray-900">
       <h1 className="text-3xl font-bold text-center mb-4">
         Detalhes de {cidade.nome}
       </h1>
