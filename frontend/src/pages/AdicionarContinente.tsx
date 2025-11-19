@@ -6,6 +6,7 @@ import {
   updateContinente,
 } from "../services/api/continentes";
 import type { Continente } from "../services/api/continentes";
+import BackButton from "../components/BackButton";
 
 const AdicionarContinente: React.FC = () => {
   const [nome, setNome] = useState<string>("");
@@ -66,6 +67,7 @@ const AdicionarContinente: React.FC = () => {
 
   return (
     <div className="container mx-auto p-6">
+        <BackButton />
       <h1 className="text-3xl font-bold text-center">
         {isEditing ? "Editar Continente" : "Adicionar Continente"}
       </h1>

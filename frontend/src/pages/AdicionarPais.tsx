@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchPaisById, addPais, updatePais, type Pais } from "../services/api/paises";
 import { fetchContinentes } from "../services/api/continentes";
 import { getCountryData, type CountryData } from "../services/api/apisExternas";
+import BackButton from "../components/BackButton";
 
 const AdicionarPais: React.FC = () => {
   const [nome, setNome] = useState<string>("");
@@ -114,6 +115,7 @@ const AdicionarPais: React.FC = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <BackButton />
       <h1 className="text-3xl font-bold text-center">
         {isEditing ? "Editar País" : "Adicionar País"}
       </h1>

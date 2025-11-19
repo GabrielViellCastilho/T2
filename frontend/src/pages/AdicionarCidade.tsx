@@ -6,6 +6,7 @@ import { fetchPaises } from '../services/api/paises';
 import type { Cidade } from '../services/api/cidades';
 import type { Pais } from '../services/api/paises';
 import { fetchContinentes } from '../services/api/continentes';
+import BackButton from '../components/BackButton';
 
 const AdicionarCidade: React.FC = () => {
   const [nome, setNome] = useState<string>('');
@@ -85,6 +86,7 @@ const AdicionarCidade: React.FC = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <BackButton />
       <h1 className="text-3xl font-bold text-center">
         {isEditing ? 'Editar Cidade' : 'Adicionar Cidade'}
       </h1>
